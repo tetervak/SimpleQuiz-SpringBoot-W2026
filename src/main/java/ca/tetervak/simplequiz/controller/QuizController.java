@@ -26,7 +26,7 @@ public class QuizController {
     public ModelAndView newProblem(HttpSession session){
         log.trace("newProblem() is called");
         AdditionProblem problem = repository.getRandomAdditionProblem();
-        log.debug("problem = " + problem);
+        log.debug("problem = {}", problem);
         session.setAttribute("problem", problem);
         return new ModelAndView("new-problem", "problem", problem);
     }
@@ -36,10 +36,10 @@ public class QuizController {
         log.trace("seeAnswer() is called");
         AdditionProblem problem = (AdditionProblem) session.getAttribute("problem");
         if (problem == null) {
-            log.debug("The session data is not found.");
+            log.debug("seeAnswer: The session data is not found.");
             return new ModelAndView("session-expired");
         } else {
-            log.debug("problem = " + problem);
+            log.debug("seeAnswer: problem = {}", problem);
             return new ModelAndView("see-answer", "problem", problem);
         }
     }
@@ -49,10 +49,10 @@ public class QuizController {
         log.trace("tryAgain() is called");
         AdditionProblem problem = (AdditionProblem) session.getAttribute("problem");
         if (problem == null) {
-            log.debug("The session data is not found.");
+            log.debug("tryAgain: The session data is not found.");
             return new ModelAndView("session-expired");
         } else {
-            log.debug("problem = " + problem);
+            log.debug("tryAgain: problem = {}", problem);
             return new ModelAndView("try-again", "problem", problem);
         }
     }
@@ -63,13 +63,13 @@ public class QuizController {
             HttpSession session,
             Model model){
         log.trace("checkAnswer() is called");
-        log.debug("userAnswer = " + userAnswer);
+        log.debug("checkAnswer: userAnswer = {}", userAnswer);
         AdditionProblem problem = (AdditionProblem) session.getAttribute("problem");
         if (problem == null) {
-            log.debug("The session data is not found.");
+            log.debug("checkAnswer: The session data is not found.");
             return "session-expired";
         } else {
-            log.debug("problem = " + problem);
+            log.debug("checkAnswer: problem = {}", problem);
             model.addAttribute("userAnswer", userAnswer);
             model.addAttribute("problem", problem);
             return switch (AnswerStatus.getStatus(problem.correctAnswer(), userAnswer)) {
