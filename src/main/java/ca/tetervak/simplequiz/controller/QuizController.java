@@ -4,8 +4,6 @@ import ca.tetervak.simplequiz.domain.AdditionProblem;
 import ca.tetervak.simplequiz.domain.AnswerStatus;
 import ca.tetervak.simplequiz.repository.ProblemRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
