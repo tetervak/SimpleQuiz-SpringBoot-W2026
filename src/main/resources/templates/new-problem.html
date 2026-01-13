@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Problem</title>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{css/main.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{css/footer.css}">
+</head>
+<body>
+<main>
+    <h1>Simple Quiz</h1>
+    <h2>Problem</h2>
+    <h3>Enter your answer</h3>
+    <form th:action="@{check-answer}" method="get" >
+        <p>
+            <label for="answer" class="problem_text">
+                <span th:text="${problem.firstOperand}" class="number">2</span>
+                &plus;
+                <span th:text="${problem.secondOperand}" class="number">2</span> =
+            </label>
+            <input id="answer" type="text" name="userAnswer"/>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+    <p>
+        <a th:href="@{new-problem}">New Problem</a>
+    </p>
+    <p>
+        <a th:href="@{see-answer}">See Answer</a>
+    </p>
+</main>
+<footer>
+    Sheridan College&nbsp;&nbsp;<span class='hart'>&#9825;</span>&nbsp;&nbsp;2026
+</footer>
+</body>
+</html>
